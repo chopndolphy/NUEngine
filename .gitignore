@@ -30,3 +30,17 @@
 *.exe
 *.out
 *.app
+
+.vscode/
+.cache/
+.clang-format
+compile_commands.json
+assets/
+build/
+*.spv
+*.vert.spv
+*.frag.spv
+*.comp.spv
+
+imgui.ini
+*/build/
