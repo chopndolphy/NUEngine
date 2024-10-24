@@ -1,6 +1,7 @@
 #pragma once
 #include <volk.h>
 #include <vk_mem_alloc.h>
+#include <SDL_vulkan.h>
 
 struct nuInstanceBuild_ret {
     VkInstance instance;
@@ -17,7 +18,10 @@ struct nuInstanceBuild_ret {
 
 class nuInstanceBuilder {
     public:
+        nuInstanceBuilder(SDL_Window* window);
         nuInstanceBuild_ret build();
     private:
+        nuInstanceBuild_ret _build{};
+        SDL_Window* _window;
 
 };

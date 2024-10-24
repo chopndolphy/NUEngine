@@ -23,6 +23,7 @@ add_library(nu-core SHARED
     ${CORE_SRC}/nuEngine.cpp
     ${CORE_SRC}/nuWindow.cpp
     ${CORE_SRC}/util/nuInstanceBuilder.cpp
+    ${CORE_SRC}/util/nuInstanceBuilder.cpp
 )
 set_target_properties(nu-core PROPERTIES VERSION ${PROJECT_VERSION})
 set_target_properties(nu-core PROPERTIES SOVERSION ${PROJECT_VERSION_MAJOR})
