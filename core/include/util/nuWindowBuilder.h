@@ -2,7 +2,7 @@
 #include <volk.h>
 #include <vector>
 
-struct nuWindowBuild_ret {
+struct nuSwapchainBuild_ret {
     VkSwapchainKHR swapchain;
     VkFormat swapchain_image_format;
     std::vector<VkImage> swapchain_images;
@@ -14,10 +14,11 @@ class nuWindowBuilder {
 
     public:
         nuWindowBuilder(VkPhysicalDevice physicalDevice, VkDevice device, VkSurfaceKHR surface, VkExtent2D windowExtent);
-        nuWindowBuild_ret build();
+        nuSwapchainBuild_ret buildSwapchain();
+
 
     private:
-        nuWindowBuild_ret _build{};
+        nuSwapchainBuild_ret _swapchainBuild{};
         VkPhysicalDevice _physicalDevice;
         VkDevice _device;
         VkSurfaceKHR _surface;
