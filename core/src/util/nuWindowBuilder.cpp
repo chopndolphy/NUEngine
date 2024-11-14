@@ -28,7 +28,7 @@ nuWindowBuild_ret nuWindowBuilder::build() {
     _build.swapchain_image_views = vkbSwapchain.get_image_views().value();
     // MIGHT NEED TO PULL OUT FOR SWAPCHAIN REBUILDING
     
-    VkExtent3D 
+    //VkExtent3D 
 
 
 

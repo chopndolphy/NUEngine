@@ -4,6 +4,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_FLAGS "-DAVI_DISABLE_INTERCHANGE -O2 -Wall -Wextra -pedantic -g")
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 # set(CMAKE_CXX_FLAGS "-DNDEBUG -DAVI_DISABLE_INTERCHANGE -O3")
+set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
 
 project(nu-engine VERSION 1.0)
@@ -23,7 +24,7 @@ add_library(nu-core SHARED
     ${CORE_SRC}/nuEngine.cpp
     ${CORE_SRC}/nuWindow.cpp
     ${CORE_SRC}/util/nuInstanceBuilder.cpp
-    ${CORE_SRC}/util/nuInstanceBuilder.cpp
+    ${CORE_SRC}/util/nuWindowBuilder.cpp
 )
 set_target_properties(nu-core PROPERTIES VERSION ${PROJECT_VERSION})
 set_target_properties(nu-core PROPERTIES SOVERSION ${PROJECT_VERSION_MAJOR})
@@ -50,6 +51,7 @@ target_include_directories(nu-core PUBLIC ${STB_IMAGE_INCLUDE_DIR})
 
 add_subdirectory(${EXTERNAL}/vkbootstrap)
 target_link_libraries(nu-core PUBLIC vk-bootstrap::vk-bootstrap)
+set_target_properties(vk-bootstrap PROPERTIES POSITION_INDEPENDENT_CODE ON)
 
 set(VMA_INCLUDE_DIR ${EXTERNAL}/vma)
 target_include_directories(nu-core PUBLIC ${VMA_INCLUDE_DIR})
