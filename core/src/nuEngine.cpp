@@ -47,7 +47,28 @@ void nuEngine::init() {
 }
 
 void nuEngine::run() {
+    bool quit = false;
 
+    uint64_t now = SDL_GetPerformanceCounter();
+	uint64_t last = 0;
+
+    while (!quit) {
+        last = now;
+		now = SDL_GetPerformanceCounter();
+
+		float deltaTime = (float)((now - last) / (float)SDL_GetPerformanceFrequency());
+        
+        SDL_Event event = { 0 };
+
+		while (SDL_PollEvent(&event))
+        {
+            switch (event.type) {
+			case SDL_QUIT:
+				quit = true;
+				break;
+            }
+        }
+    }
 }
 
 void nuEngine::cleanup() {
