@@ -28,13 +28,3 @@ nuSwapchainBuild_ret nuWindowBuilder::buildSwapchain() {
 
     return _swapchainBuild;
 }
-    
-    VkExtent3D 
-
-
-
-
-    
-    
-
-}
