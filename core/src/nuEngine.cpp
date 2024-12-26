@@ -30,20 +30,7 @@ void nuEngine::init() {
         _asyncComputeQueueFamily = build.async_compute_queue_family;
     }
 
-    {
-        nuWindowBuilder windowBuilder(_physicalDevice, _device, _surface, _windowExtent);
-        nuSwapchainBuild_ret build = windowBuilder.buildSwapchain();
-        _swapchain = build.swapchain;
-        _swapchainImageFormat = build.swapchain_image_format;
-        _swapchainImages[0] = build.swapchain_images[0];
-        _swapchainImages[1] = build.swapchain_images[1];
-        _swapchainImageViews[0] = build.swapchain_image_views[0];
-        _swapchainImageViews[1] = build.swapchain_image_views[1];
-        _swapchainExtent = build.swapchain_extent;
-    }
-
-    
-
+    init_swapchain();
 }
 
 void nuEngine::run() {
@@ -66,6 +53,13 @@ void nuEngine::run() {
 			case SDL_QUIT:
 				quit = true;
 				break;
+            case SDL_WINDOWEVENT:
+                switch (event.window.event) {
+                case SDL_WINDOWEVENT_RESIZED:
+                    _windowExtent.width = event.window.data1;
+                    _windowExtent.height = event.window.data2;
+                    init_swapchain();
+                }
             }
         }
     }
@@ -94,7 +88,20 @@ void nuEngine::init_sdl() {
         windowFlags
     );
     
-    SDL_SetRelativeMouseMode(SDL_TRUE);
+    //SDL_SetRelativeMouseMode(SDL_TRUE);
+}
+
+void nuEngine::init_swapchain()
+{
+    nuWindowBuilder windowBuilder(_physicalDevice, _device, _surface, _windowExtent);
+    nuSwapchainBuild_ret build = windowBuilder.buildSwapchain();
+    _swapchain = build.swapchain;
+    _swapchainImageFormat = build.swapchain_image_format;
+    _swapchainImages[0] = build.swapchain_images[0];
+    _swapchainImages[1] = build.swapchain_images[1];
+    _swapchainImageViews[0] = build.swapchain_image_views[0];
+    _swapchainImageViews[1] = build.swapchain_image_views[1];
+    _swapchainExtent = build.swapchain_extent;
 }
 
 void nuEngine::init_device_properties() {

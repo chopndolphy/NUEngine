@@ -41,5 +41,6 @@ class nuEngine {
         VkPhysicalDeviceAccelerationStructurePropertiesKHR _asProperties{};
 
         void init_sdl();
+        void init_swapchain();
         void init_device_properties();
 };
