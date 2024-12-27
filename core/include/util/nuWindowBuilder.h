@@ -1,6 +1,7 @@
 #pragma once
 #include <volk.h>
 #include <vector>
+#include "nuDeletionQueue.h"
 
 struct nuSwapchainBuild_ret {
     VkSwapchainKHR swapchain;
@@ -13,7 +14,7 @@ struct nuSwapchainBuild_ret {
 class nuWindowBuilder {
 
     public:
-        nuWindowBuilder(VkPhysicalDevice physicalDevice, VkDevice device, VkSurfaceKHR surface, VkExtent2D windowExtent);
+        nuWindowBuilder(VkPhysicalDevice physicalDevice, VkDevice device, VkSurfaceKHR surface, VkExtent2D windowExtent, nuDeletionQueue* deletionQueue);
         nuSwapchainBuild_ret buildSwapchain();
 
 
@@ -23,5 +24,6 @@ class nuWindowBuilder {
         VkDevice _device;
         VkSurfaceKHR _surface;
         VkExtent2D _windowExtent;
+        nuDeletionQueue* _deletionQueue;
 
 };

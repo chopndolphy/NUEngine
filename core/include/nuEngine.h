@@ -5,6 +5,7 @@
 #include <vk_mem_alloc.h>
 
 #include "nuWindow.h"
+#include "nuDeletionQueue.h"
 
 class nuEngine {
     public:
@@ -31,6 +32,7 @@ class nuEngine {
         VkImage _swapchainImages[2];
         VkImageView _swapchainImageViews[2];
         VkExtent2D _swapchainExtent;
+        nuDeletionQueue _swapchainDeletionQueue;
 
 
 

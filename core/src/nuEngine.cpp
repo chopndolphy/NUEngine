@@ -93,7 +93,7 @@ void nuEngine::init_sdl() {
 
 void nuEngine::init_swapchain()
 {
-    nuWindowBuilder windowBuilder(_physicalDevice, _device, _surface, _windowExtent);
+    nuWindowBuilder windowBuilder(_physicalDevice, _device, _surface, _windowExtent, &_swapchainDeletionQueue);
     nuSwapchainBuild_ret build = windowBuilder.buildSwapchain();
     _swapchain = build.swapchain;
     _swapchainImageFormat = build.swapchain_image_format;

@@ -1,11 +1,12 @@
 #include "util/nuWindowBuilder.h"
 
 #include <VkBootstrap.h>
-nuWindowBuilder::nuWindowBuilder(VkPhysicalDevice physicalDevice, VkDevice device, VkSurfaceKHR surface, VkExtent2D windowExtent) {
+nuWindowBuilder::nuWindowBuilder(VkPhysicalDevice physicalDevice, VkDevice device, VkSurfaceKHR surface, VkExtent2D windowExtent, nuDeletionQueue* deletionQueue) {
     _physicalDevice = physicalDevice;
     _device = device;
     _surface = surface;
     _windowExtent = windowExtent;
+    _deletionQueue = deletionQueue;
 }
 
 nuSwapchainBuild_ret nuWindowBuilder::buildSwapchain() {
