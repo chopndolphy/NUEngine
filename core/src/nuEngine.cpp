@@ -56,9 +56,9 @@ void nuEngine::run() {
             case SDL_WINDOWEVENT:
                 switch (event.window.event) {
                 case SDL_WINDOWEVENT_RESIZED:
-                    _windowExtent.width = event.window.data1;
-                    _windowExtent.height = event.window.data2;
-                    init_swapchain();
+                    _//windowExtent.width = event.window.data1;
+                    //_windowExtent.height = event.window.data2;
+                    //init_swapchain();
                 }
             }
         }
